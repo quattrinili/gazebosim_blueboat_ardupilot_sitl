@@ -175,12 +175,18 @@
 
 
     <!--BLUE BOAT-->
+    <!--
     <include>
       <pose>15 0 0 0 0 0</pose>
       <uri>model://blueboat</uri>
     </include>
+    -->
 
-
+    <include>
+      <pose>15 0 0 0 0 0</pose>
+      <uri>model://blueboat_with_tags</uri>
+      <name>blueboat</name>
+    </include>
     
 
     <!-- <include>

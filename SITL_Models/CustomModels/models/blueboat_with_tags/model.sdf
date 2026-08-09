@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <model name="blueboat_with_tags">
+    
+    <!-- 1. Include the Blueboat model -->
+    <include merge="true">
+      <uri>model://blueboat</uri>
+    </include>
+
+    <!-- 2. Include Upper AprilTag -->
+    <include>
+      <uri>model://tag36_11_00000</uri>
+      <name>tag_upper</name>
+      <pose>0.4 0 0.15 0 -1.57079632679 0</pose>
+    </include>
+
+    <!-- 3. Include Lower AprilTag -->
+    <include>
+      <uri>model://tag16_05_00000</uri>
+      <name>tag_lower</name>
+      <pose>0.4 0 0.0 0 1.57079632679 3.14159265359</pose>
+    </include>
+
+    <!-- 4. Rigorously attach the tags to the blueboat's base_link -->
+    <joint name="tag_upper_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>tag_upper::tag36_link</child>
+    </joint>
+
+    <joint name="tag_lower_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>tag_lower::tag16_link</child>
+    </joint>
+
+  </model>
+</sdf>

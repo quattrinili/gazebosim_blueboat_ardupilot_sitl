@@ -23,7 +23,8 @@ $HOME/gz_ws/src/asv_wave_sim/gz-waves/src/gui/plugins/waves_control/build
 # Append additional paths for BlueBoat models and worlds
 export GZ_SIM_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH:\
 $HOME/SITL_Models/Gazebo/models:\
-$HOME/SITL_Models/Gazebo/worlds
+$HOME/SITL_Models/Gazebo/worlds:\
+$HOME/SITL_Models/CustomModels/models
 
 # Check to make sure the script is being sourced and not directly executed
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
