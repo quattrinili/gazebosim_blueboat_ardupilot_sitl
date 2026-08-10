@@ -183,7 +183,7 @@
     -->
 
     <include>
-      <pose>15 0 0 0 0 0</pose>
+      <pose>15 0 0 0 0 3.14159265359</pose>
       <uri>model://blueboat_with_tags</uri>
       <name>blueboat</name>
     </include>
