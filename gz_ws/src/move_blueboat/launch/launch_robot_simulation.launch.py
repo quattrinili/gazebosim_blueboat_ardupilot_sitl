@@ -30,12 +30,12 @@ def generate_launch_description():
                 '/model/smallboat/odometry@nav_msgs/msg/Odometry@ignition.msgs.Odometry',
                 '/smallboat/navsat@sensor_msgs/msg/NavSatFix@ignition.msgs.NavSat',
                 # Smallboat Stereo Camera (Left)
-                # '/smallboat/camera/left/image_raw@sensor_msgs/msg/Image@ignition.msgs.Image',
-                '/smallboat/camera/left/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
+                # '/smallboat/left/camera/image_raw@sensor_msgs/msg/Image@ignition.msgs.Image',
+                '/smallboat/left/camera/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
                 
                 # Smallboat Stereo Camera (Right)
-                # '/smallboat/camera/right/image_raw@sensor_msgs/msg/Image@ignition.msgs.Image',
-                # '/smallboat/camera/right/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
+                # '/smallboat/right/camera/image_raw@sensor_msgs/msg/Image@ignition.msgs.Image',
+                # '/smallboat/right/camera/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
                 # lidar
                 # '/smallboat/laser_scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan',
             ],
@@ -46,7 +46,7 @@ def generate_launch_description():
             executable='image_bridge',
             arguments=[
                 # '/camera', # Blueboat camera
-                '/smallboat/camera/left/image_raw' # Smallboat camera
+                '/smallboat/left/camera/image_raw' # Smallboat camera
             ],
             output='screen'
         ),
