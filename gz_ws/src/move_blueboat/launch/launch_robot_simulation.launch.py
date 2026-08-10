@@ -20,23 +20,36 @@ def generate_launch_description():
                 '/model/blueboat/odometry@nav_msgs/msg/Odometry@ignition.msgs.Odometry',
                 '/navsat@sensor_msgs/msg/NavSatFix@ignition.msgs.NavSat',
                 # camera
-                '/camera@sensor_msgs/msg/Image@ignition.msgs.Image',
-                '/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
+                # '/camera@sensor_msgs/msg/Image@ignition.msgs.Image',
+                # '/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
                 # lidar
-                '/laser_scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan',
+                # '/laser_scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan',
+
                 '/model/smallboat/joint/motor_port_joint/cmd_thrust@std_msgs/msg/Float64@ignition.msgs.Double',
                 '/model/smallboat/joint/motor_stbd_joint/cmd_thrust@std_msgs/msg/Float64@ignition.msgs.Double',
                 '/model/smallboat/odometry@nav_msgs/msg/Odometry@ignition.msgs.Odometry',
                 '/smallboat/navsat@sensor_msgs/msg/NavSatFix@ignition.msgs.NavSat',
-                # camera
-                '/smallboat/camera@sensor_msgs/msg/Image@ignition.msgs.Image',
-                '/smallboat/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
+                # Smallboat Stereo Camera (Left)
+                # '/smallboat/camera/left/image_raw@sensor_msgs/msg/Image@ignition.msgs.Image',
+                '/smallboat/camera/left/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
+                
+                # Smallboat Stereo Camera (Right)
+                # '/smallboat/camera/right/image_raw@sensor_msgs/msg/Image@ignition.msgs.Image',
+                # '/smallboat/camera/right/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
                 # lidar
-                '/smallboat/laser_scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan',
+                # '/smallboat/laser_scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan',
             ],
             output='screen'
         ),
-
+        Node(
+            package='ros_ign_image',
+            executable='image_bridge',
+            arguments=[
+                # '/camera', # Blueboat camera
+                '/smallboat/camera/left/image_raw' # Smallboat camera
+            ],
+            output='screen'
+        ),
         # Optionally, launch your ROS 2 node if you have a custom node for additional logic
         # Node(
         #     package='move_blueboat',

@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<sdf version="1.9">
+  <model name="camera_imx219_stereo">
+    <pose>0 0 0 0 0 0</pose> <!-- world pose overridden by joint -->
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      
+      <inertial>
+        <mass>0.05</mass>
+        <inertia>
+          <ixx>1.0e-5</ixx>
+          <iyy>1.0e-5</iyy>
+          <izz>1.0e-5</izz>
+        </inertia>
+      </inertial>
+      
+      <!-- Visual geometry representing the stereo camera board -->
+      <visual name="visual">
+        <geometry>
+          <box><size>0.024 0.085 0.024</size></box>
+        </geometry>
+        <material>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+        </material>
+      </visual>
+      
+      <collision name="collision">
+        <geometry>
+          <box><size>0.024 0.085 0.024</size></box>
+        </geometry>
+      </collision>
+
+      <!-- LEFT CAMERA -->
+      <sensor name="left_camera" type="camera">
+        <pose>0.012 0.03 0.0 0 0 0</pose>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <topic>smallboat/camera/left/image_raw</topic>
+        <camera>
+          <horizontal_fov>1.293</horizontal_fov>
+          <image>
+            <width>1640</width>
+            <height>1232</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          
+          <!-- Full resolution intrinsics from calibration matrix -->
+          <lens>
+            <intrinsics>
+              <fx>1086.70444</fx>
+              <fy>1086.24712</fy>
+              <cx>798.84070</cx>
+              <cy>570.24652</cy>
+              <s>0.0</s>
+            </intrinsics>
+          </lens>
+
+          <distortion>
+            <k1>0.06291655</k1>
+            <k2>-0.08153074</k2>
+            <k3>0.0</k3>
+            <p1>-0.01109246</p1>
+            <p2>0.00233376</p2>
+            <center>0.5 0.5</center>
+          </distortion>
+        </camera>
+      </sensor>
+
+      <!-- RIGHT CAMERA -->
+      <!-- <sensor name="right_camera" type="camera">
+        <pose>0.012 -0.03 0.0 0 0 0</pose>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <topic>smallboat/camera/right/image_raw</topic>
+        <camera>
+          <horizontal_fov>1.293</horizontal_fov>
+          <image>
+            <width>1640</width>
+            <height>1232</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          
+          <lens>
+            <intrinsics>
+              <fx>1086.70444</fx>
+              <fy>1086.24712</fy>
+              <cx>798.84070</cx>
+              <cy>570.24652</cy>
+              <s>0.0</s>
+            </intrinsics>
+          </lens>
+
+          <distortion>
+            <k1>0.06291655</k1>
+            <k2>-0.08153074</k2>
+            <k3>0.0</k3>
+            <p1>-0.01109246</p1>
+            <p2>0.00233376</p2>
+            <center>0.5 0.5</center>
+          </distortion>
+        </camera>
+      </sensor> -->
+    </link>
+  </model>
+</sdf>

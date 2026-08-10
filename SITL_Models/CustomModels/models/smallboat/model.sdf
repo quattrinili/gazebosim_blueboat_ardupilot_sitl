@@ -423,6 +423,18 @@
       <child>navsat_link</child>
     </joint>
 
+    <include>
+      <uri>model://camera_imx219_stereo</uri>
+      <name>stereo_camera</name>
+      <!-- Placed slightly forward (X=0.05) and elevated (Z=0.1) on the boat -->
+      <pose>0.05 0 0.1 0 0 0</pose>
+    </include>
+    <joint name="stereo_camera_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>stereo_camera::link</child>
+    </joint>
+    <!-- ============================================== -->
+
     <!-- Plugins -->
     <plugin name="gz::sim::systems::JointStatePublisher"
       filename="gz-sim-joint-state-publisher-system">
