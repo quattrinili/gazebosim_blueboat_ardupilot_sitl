@@ -32,6 +32,24 @@
       <enable>bluerov2_heavy</enable>
     </plugin> -->
 
+  <plugin filename="gz-sim-wind-effects-system"
+          name="gz::sim::systems::WindEffects">
+    <force_approximation_scaling_factor>1.0</force_approximation_scaling_factor>
+    <horizontal>
+      <magnitude>
+        <time_for_rise>1.0</time_for_rise>
+        <constant>2.0</constant> <!-- Set your steady wind speed here (e.g., 2.0 m/s) -->
+      </magnitude>
+      <direction>
+        <time_for_rise>1.0</time_for_rise>
+        <constant>0.0</constant> <!-- Set your steady wind angle in degrees here -->
+      </direction>
+    </horizontal>
+    <vertical>
+      <constant>0.0</constant>
+    </vertical>
+  </plugin>
+
   <wind>
     <linear_velocity>0.0 0.0 0.0</linear_velocity> <!-- X, Y, Z wind vector in m/s -->
   </wind>
