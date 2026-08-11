@@ -410,12 +410,12 @@
         <always_on>1</always_on>
         <update_rate>1.0</update_rate>
         <topic>smallboat/navsat</topic>
-        <gps>
+        <!-- <gps>
           <fix>
             <service>1</service>
             <status>0</status>
           </fix>
-        </gps>
+        </gps> -->
       </sensor>
     </link>
     <joint name="navsat_joint" type="fixed">
@@ -514,5 +514,36 @@
       </control>
     </plugin>
 
+    <!-- magnet -->
+      <joint name="magnet_joint" type="fixed">
+        <parent>base_link</parent>
+        <child>magnet_link</child>
+      </joint>
+
+      <!-- Separate, Low-Mass Magnet Link -->
+      <!-- Positioned at the very front bow of the ASV -->
+      <link name="magnet_link">
+        <pose>0.15 0 0.00 0 0 0</pose> 
+        <inertial>
+          <mass>0.1</mass> <!-- Small, isolated mass -->
+          <inertia><ixx>0.001</ixx><iyy>0.001</iyy><izz>0.001</izz></inertia>
+        </inertial>
+        <collision name="magnet_collision">
+          <geometry><cylinder><radius>0.03</radius><length>0.05</length></cylinder></geometry>
+        </collision>
+        <visual name="magnet_visual">
+          <geometry><cylinder><radius>0.03</radius><length>0.05</length></cylinder></geometry>
+          <material><ambient>0.9 0.1 0.1 1</ambient><diffuse>0.9 0.1 0.1 1</diffuse></material> <!-- Red magnet -->
+        </visual>
+      </link>
+    <plugin filename="gz-sim-detachable-joint-system" name="gz::sim::systems::DetachableJoint">
+      <parent_link>magnet_link</parent_link>
+      <child_model>blueboat</child_model>
+      <child_link>plate_link</child_link>
+      <!-- <topic>/smallboat/magnet_control</topic> 1 to lock/dock, 0 to unlock/undock -->
+      <attach_topic>/smallboat/magnet/attach</attach_topic>
+      <detach_topic>/smallboat/magnet/detach</detach_topic>
+      <suppress_child_warning>true</suppress_child_warning>
+    </plugin>
   </model>
 </sdf>

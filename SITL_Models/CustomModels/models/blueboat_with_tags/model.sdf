@@ -32,5 +32,23 @@
       <child>tag_lower::tag16_link</child>
     </joint>
 
+    <joint name="plate_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>plate_link</child>
+    </joint>
+
+    <!-- Target element the ASV magnet couples with -->
+    <link name="plate_link">
+      <pose>0.4 0 -0.05 0 0 0</pose> <!-- Rotated facing the approaching ASV -->
+      <collision name="plate_collision">
+        <geometry><cylinder><radius>0.05</radius><length>0.02</length></cylinder></geometry>
+      </collision>
+      <visual name="plate_visual">
+        <geometry><cylinder><radius>0.05</radius><length>0.02</length></cylinder></geometry>
+        <material><ambient>0.1 0.8 0.1 1</ambient><diffuse>0.1 0.8 0.1 1</diffuse></material> <!-- Green target plate -->
+      </visual>
+    </link>
+
+
   </model>
 </sdf>

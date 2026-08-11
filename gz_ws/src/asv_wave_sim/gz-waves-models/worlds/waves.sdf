@@ -19,7 +19,6 @@
             name="gz::sim::systems::Imu">
     </plugin>
 
-
     <!-- <plugin
       filename="gz-sim-buoyancy-system"
       name="gz::sim::systems::Buoyancy">
@@ -185,12 +184,6 @@
       <uri>model://blueboat</uri>
     </include>
     -->
-
-    <include>
-      <pose>15 0 0 0 0 3.14159265359</pose>
-      <uri>model://blueboat_with_tags</uri>
-      <name>blueboat</name>
-    </include>
     
     <include>
       <pose>13 0 0.5 0 0 0</pose>
@@ -198,6 +191,11 @@
       <name>smallboat</name>
     </include>
 
+    <include>
+      <pose>15 0 0 0 0 3.14159265359</pose>
+      <uri>model://blueboat_with_tags</uri>
+      <name>blueboat</name>
+    </include>
     <!-- <include>
       <pose>15 0 0 0 0 3.14</pose>
       <uri>model://barrage</uri>

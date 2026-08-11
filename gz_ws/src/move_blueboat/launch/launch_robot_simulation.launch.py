@@ -38,6 +38,9 @@ def generate_launch_description():
                 # '/smallboat/right/camera/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
                 # lidar
                 # '/smallboat/laser_scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan',
+
+                '/smallboat/magnet/attach@std_msgs/msg/Empty@gz.msgs.Empty',
+                '/smallboat/magnet/detach@std_msgs/msg/Empty@gz.msgs.Empty'
             ],
             output='screen'
         ),
