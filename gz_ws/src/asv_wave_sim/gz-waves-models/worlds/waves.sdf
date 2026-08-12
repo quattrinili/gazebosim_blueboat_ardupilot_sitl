@@ -51,7 +51,7 @@
   </plugin>
 
   <wind>
-    <linear_velocity>0.0 0.0 0.0</linear_velocity> <!-- X, Y, Z wind vector in m/s -->
+    <linear_velocity>0.0 0.2 0.0</linear_velocity> <!-- X, Y, Z wind vector in m/s -->
   </wind>
 
     <!-- Processes the NavSat sensor -->

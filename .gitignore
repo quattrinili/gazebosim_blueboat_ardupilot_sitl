@@ -1,0 +1,16 @@
+# Log files
+*.log
+
+# ROS 2 / colcon generated directories
+/gz_ws/build/
+/gz_ws/install/
+/gz_ws/log/
+
+# Generated log directories that appear inside src
+/gz_ws/src/log/
+
+# Build directories generated inside packages
+/gz_ws/src/**/build/
+
+# Local Docker startup script
+/blueboat_sitl/docker/run.sh
