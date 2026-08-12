@@ -40,7 +40,24 @@ def generate_launch_description():
                 # '/smallboat/laser_scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan',
 
                 '/smallboat/magnet/attach@std_msgs/msg/Empty@gz.msgs.Empty',
-                '/smallboat/magnet/detach@std_msgs/msg/Empty@gz.msgs.Empty'
+                '/smallboat/magnet/detach@std_msgs/msg/Empty@gz.msgs.Empty',
+
+                '/model/blueboat/pose@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V',
+                '/model/blueboat/pose_static@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
+
+                '/model/smallboat/pose@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
+                '/model/smallboat/pose_static@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
+            ],
+            parameters=[
+            # Force /tf_static to use transient_local durability to satisfy ROS 2 requirements
+                {'qos_overrides./tf_static.publisher.durability': 'transient_local'}
+            ],
+            remappings=[
+                # Remap Gazebo pose topics directly to ROS 2 standard TF topics
+                ('/model/blueboat/pose', '/tf'),
+                ('/model/blueboat/pose_static', '/tf_static'),
+                ('/model/smallboat/pose', '/tf'),
+                ('/model/smallboat/pose_static', '/tf_static'),
             ],
             output='screen'
         ),
