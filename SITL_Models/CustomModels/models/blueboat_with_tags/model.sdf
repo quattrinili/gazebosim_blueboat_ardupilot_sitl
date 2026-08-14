@@ -11,14 +11,14 @@
     <include>
       <uri>model://tag36_11_00000</uri>
       <name>tag_upper</name>
-      <pose>0.4 0 0.15 0 -1.57079632679 3.14159265359</pose>
+      <pose>0.35 0 0.15 0 -1.57079632679 3.14159265359</pose>
     </include>
 
     <!-- 3. Include Lower AprilTag -->
     <include>
       <uri>model://tag16_05_00000</uri>
       <name>tag_lower</name>
-      <pose>0.4 0 0.0 0 1.57079632679 0</pose>
+      <pose>0.35 0 0.0 0 1.57079632679 0</pose>
     </include>
 
     <!-- 4. Rigorously attach the tags to the blueboat's base_link -->
@@ -39,12 +39,12 @@
 
     <!-- Target element the ASV magnet couples with -->
     <link name="plate_link">
-      <pose>0.4 0 -0.05 0 0 0</pose> <!-- Rotated facing the approaching ASV -->
+      <pose>0.35 0 -0.05 0 0 0</pose> <!-- Rotated facing the approaching ASV -->
       <collision name="plate_collision">
-        <geometry><cylinder><radius>0.05</radius><length>0.02</length></cylinder></geometry>
+        <geometry><cylinder><radius>0.015</radius><length>0.01</length></cylinder></geometry>
       </collision>
       <visual name="plate_visual">
-        <geometry><cylinder><radius>0.05</radius><length>0.02</length></cylinder></geometry>
+        <geometry><cylinder><radius>0.015</radius><length>0.01</length></cylinder></geometry>
         <material><ambient>0.1 0.8 0.1 1</ambient><diffuse>0.1 0.8 0.1 1</diffuse></material> <!-- Green target plate -->
       </visual>
     </link>

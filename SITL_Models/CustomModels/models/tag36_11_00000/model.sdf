@@ -14,11 +14,29 @@
           <izz>0.00001</izz>
         </inertia>
       </inertial>
-      <visual name="visual">
+
+      <!-- 1. Solid White Backing Body (Sides and Rear) -->
+      <visual name="visual_body">
         <geometry>
           <box>
             <size>0.2 0.2 0.001</size>
           </box>
+        </geometry>
+        <material>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>1 1 1 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
+
+      <!-- 2. Textured Front Face (0.2m x 0.2m Plane offset to z=0.00051m) -->
+      <visual name="visual_tag_face">
+        <pose>0 0 0.00051 0 0 0</pose>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>0.2 0.2</size>
+          </plane>
         </geometry>
         <material>
           <ambient>1 1 1 1</ambient>
@@ -33,15 +51,14 @@
           </pbr>
         </material>
       </visual>
-      <!--
-      <collision name="collision">
+
+      <!-- <collision name="collision">
         <geometry>
           <box>
             <size>0.2 0.2 0.001</size>
           </box>
         </geometry>
-      </collision>
-      -->
+      </collision> -->
     </link>
   </model>
 </sdf>
