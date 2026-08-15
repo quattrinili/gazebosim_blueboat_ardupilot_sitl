@@ -19,7 +19,7 @@
       <visual name="visual_body">
         <geometry>
           <box>
-            <size>0.2 0.2 0.001</size>
+            <size>0.225 0.225 0.001</size>
           </box>
         </geometry>
         <material>
@@ -35,7 +35,7 @@
         <geometry>
           <plane>
             <normal>0 0 1</normal>
-            <size>0.2 0.2</size>
+            <size>0.225 0.225</size>
           </plane>
         </geometry>
         <material>
