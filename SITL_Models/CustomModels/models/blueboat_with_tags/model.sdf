@@ -11,14 +11,14 @@
     <include>
       <uri>model://tag36_11_00000</uri>
       <name>tag_upper</name>
-      <pose>0.35 0 0.15 0 -1.57079632679 3.14159265359</pose>
+      <pose>0.35 0 0.15 1.57079632679 0 1.57079632679</pose>
     </include>
 
     <!-- 3. Include Lower AprilTag -->
     <include>
       <uri>model://tag16_05_00000</uri>
       <name>tag_lower</name>
-      <pose>0.35 0 0.0 0 1.57079632679 0</pose>
+      <pose>0.35 0 0.0 -1.57079632679 0 -1.57079632679</pose>
     </include>
 
     <!-- 4. Rigorously attach the tags to the blueboat's base_link -->
