@@ -33,6 +33,18 @@
     <link name="left_camera_link">
       <pose>0.012 0.03 0.0 0 0 0</pose>
 
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>1.0e-6</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.0e-6</iyy>
+          <iyz>0</iyz>
+          <izz>1.0e-6</izz>
+        </inertia>
+      </inertial>
+
       <!-- LEFT CAMERA -->
       <sensor name="left_camera" type="camera">
         <pose>0 0 0.0 0 0 0</pose>
@@ -82,6 +94,17 @@
     <link name="left_camera_optical_frame">
       <!-- Translation is 0 relative to parent link; rotate -90deg Roll, -90deg Yaw -->
       <pose relative_to="left_camera_link">0 0 0 -1.5707963 0 -1.5707963</pose>
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>1.0e-6</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.0e-6</iyy>
+          <iyz>0</iyz>
+          <izz>1.0e-6</izz>
+        </inertia>
+      </inertial>
     </link>
 
     <joint name="left_camera_optical_joint" type="fixed">
