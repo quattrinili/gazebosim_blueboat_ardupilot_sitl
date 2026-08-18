@@ -67,7 +67,7 @@
 
     <link name="guide_left_link">
       <!-- Positioned slightly behind/flanking the plate, angled outward to form a V -->
-      <pose>0.4 0.12 -0.12 0 0 0.5</pose> 
+      <pose>0.4 0.15 -0.12 0 0 0.45</pose> 
       <inertial>
         <mass>0.01</mass>
         <inertia>
@@ -95,7 +95,7 @@
 
     <link name="guide_right_link">
       <!-- Symmetrical opposite angle -->
-      <pose>0.4 -0.12 -0.12 0 0 -0.5</pose> 
+      <pose>0.4 -0.15 -0.12 0 0 -0.45</pose> 
       <inertial>
         <mass>0.01</mass>
         <inertia>
