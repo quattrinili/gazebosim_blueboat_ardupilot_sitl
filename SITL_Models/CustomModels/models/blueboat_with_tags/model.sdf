@@ -41,15 +41,82 @@
     <link name="plate_link">
       <pose>0.32 0 -0.12 0 0 0</pose> <!-- Rotated facing the approaching ASV -->
       <collision name="plate_collision">
-        <geometry><cylinder><radius>0.015</radius><length>0.01</length></cylinder></geometry>
+        <geometry>
+          <box>
+            <size>0.01 0.08 0.03</size> <!-- Thickness (X), Width (Y), Height (Z) -->
+          </box>
+        </geometry>
       </collision>
       <visual name="plate_visual">
-        <geometry><cylinder><radius>0.015</radius><length>0.01</length></cylinder></geometry>
-        <material><ambient>0.1 0.8 0.1 1</ambient><diffuse>0.1 0.8 0.1 1</diffuse></material> <!-- Green target plate -->
+        <geometry>
+          <box>
+            <size>0.01 0.08 0.03</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.1 0.8 0.1 1</ambient>
+          <diffuse>0.1 0.8 0.1 1</diffuse>
+        </material> <!-- Green target plate -->
       </visual>
     </link>
 
-<plugin filename="gz-sim-pose-publisher-system" name="gz::sim::systems::PosePublisher">
+    <joint name="guide_left_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>guide_left_link</child>
+    </joint>
+
+    <link name="guide_left_link">
+      <!-- Positioned slightly behind/flanking the plate, angled outward to form a V -->
+      <pose>0.4 0.12 -0.12 0 0 0.5</pose> 
+      <inertial>
+        <mass>0.01</mass>
+        <inertia>
+          <ixx>0.00001</ixx>
+          <iyy>0.00001</iyy>
+          <izz>0.00001</izz>
+        </inertia>
+      </inertial>
+      <collision name="guide_left_collision">
+        <geometry><box><size>0.32 0.01 0.04</size></box></geometry>
+      </collision>
+      <visual name="guide_left_visual">
+        <geometry><box><size>0.32 0.01 0.04</size></box></geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.3 0.3 0.3 1</diffuse>
+        </material> <!-- Metallic Grey Guide Rail -->
+      </visual>
+    </link>
+
+    <joint name="guide_right_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>guide_right_link</child>
+    </joint>
+
+    <link name="guide_right_link">
+      <!-- Symmetrical opposite angle -->
+      <pose>0.4 -0.12 -0.12 0 0 -0.5</pose> 
+      <inertial>
+        <mass>0.01</mass>
+        <inertia>
+          <ixx>0.00001</ixx>
+          <iyy>0.00001</iyy>
+          <izz>0.00001</izz>
+        </inertia>
+      </inertial>
+      <collision name="guide_right_collision">
+        <geometry><box><size>0.32 0.01 0.04</size></box></geometry>
+      </collision>
+      <visual name="guide_right_visual">
+        <geometry><box><size>0.32 0.01 0.04</size></box></geometry>
+        <material>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.3 0.3 0.3 1</diffuse>
+        </material>
+      </visual>
+    </link>
+
+    <plugin filename="gz-sim-pose-publisher-system" name="gz::sim::systems::PosePublisher">
       <publish_link_pose>true</publish_link_pose>
 
       <publish_nested_model_pose>true</publish_nested_model_pose> 
