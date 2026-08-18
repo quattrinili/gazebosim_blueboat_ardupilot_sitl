@@ -4,9 +4,9 @@
       <enable_wind>true</enable_wind>
       <inertial>
         <!-- Scaled pose (-0.05*0.2, 0, -0.15*0.2) -->
-        <pose>-0.01 0 -0.03 0 0 0</pose>
+        <pose>-0.03 0 -0.03 0 0 0</pose>
         <!-- Mass scaled by 0.008 (30.0 * 0.008) -->
-        <mass>3.0</mass>
+        <mass>2.0</mass>
         <inertia>
           <ixx>0.0242369</ixx>
           <ixy>0</ixy>
@@ -17,12 +17,12 @@
         </inertia>
       </inertial>
       
-      <!-- 1. Main Aft/Midship Body (Rectangular base) -->
+    <!-- 1. Main Aft/Midship Body (Rectangular base) -->
       <collision name="hull_body_collision">
         <pose>-0.05 0 -0.05 0 0 0</pose> 
         <geometry>
           <box>
-            <size>0.25 0.3 0.1</size> <!-- Length, Width, Height -->
+            <size>0.35 0.3 0.1</size> <!-- Length, Width, Height -->
           </box>
         </geometry>
       </collision>
