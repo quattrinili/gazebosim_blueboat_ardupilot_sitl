@@ -47,6 +47,9 @@ def generate_launch_description():
 
                 '/model/smallboat/pose@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
                 '/model/smallboat/pose_static@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
+
+                '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock'
+
             ],
             parameters=[
             # Force /tf_static to use transient_local durability to satisfy ROS 2 requirements
