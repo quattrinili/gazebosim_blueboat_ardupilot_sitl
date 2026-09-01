@@ -39,20 +39,20 @@
 
       <!-- 3. Port Angled Wedge (Tapers left side to front) -->
       <collision name="hull_wedge_port_collision">
-        <pose>0.15 0.11 -0.05 0 0 -0.40</pose> <!-- Rotated to match 0.4 rad guide rail -->
+        <pose>0.17 0.1125 -0.05 0 0 -0.50</pose> <!-- Rotated to connect 150mm magnet to hull body -->
         <geometry>
           <box>
-            <size>0.18 0.02 0.1</size>
+            <size>0.16 0.02 0.1</size>
           </box>
         </geometry>
       </collision>
 
       <!-- 4. Starboard Angled Wedge (Tapers right side to front) -->
       <collision name="hull_wedge_stbd_collision">
-        <pose>0.15 -0.11 -0.05 0 0 0.40</pose> <!-- Symmetrical opposite angle -->
+        <pose>0.17 -0.1125 -0.05 0 0 0.50</pose> <!-- Symmetrical opposite angle -->
         <geometry>
           <box>
-            <size>0.18 0.02 0.1</size>
+            <size>0.16 0.02 0.1</size>
           </box>
         </geometry>
       </collision>
@@ -573,14 +573,14 @@
       <collision name="magnet_collision">
         <geometry>
           <box>
-            <size>0.01 0.08 0.1</size> <!-- Thickness (X), Width (Y), Height (Z) -->
+            <size>0.01 0.150 0.1</size> <!-- Thickness (X), Width 150mm (Y), Height (Z) -->
           </box>
         </geometry>
       </collision>
       <visual name="magnet_visual">
         <geometry>
           <box>
-            <size>0.01 0.08 0.03</size>
+            <size>0.01 0.150 0.03</size>
           </box>
         </geometry>
         <material>
