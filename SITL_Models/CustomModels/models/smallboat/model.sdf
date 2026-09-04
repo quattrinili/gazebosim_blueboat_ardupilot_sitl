@@ -590,6 +590,44 @@
       </visual>
     </link>
 
+    <joint name="rear_plate_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>rear_plate_link</child>
+    </joint>
+
+    <link name="rear_plate_link">
+      <!-- Positioned at the stern (X = -0.23m) facing backward -->
+      <pose>-0.23 0 -0.05 0 0 0</pose>
+      <inertial>
+        <mass>0.05</mass>
+        <inertia><ixx>0.0001</ixx><iyy>0.0001</iyy><izz>0.0001</izz></inertia>
+      </inertial>
+      <collision name="rear_plate_collision">
+        <geometry>
+          <box><size>0.01 0.15 0.03</size></box>
+        </geometry>
+      </collision>
+      <visual name="rear_plate_visual">
+        <geometry>
+          <box><size>0.01 0.15 0.03</size></box>
+        </geometry>
+        <material>
+          <ambient>0.1 0.8 0.1 1</ambient>
+          <diffuse>0.1 0.8 0.1 1</diffuse>
+        </material> <!-- Green target plate -->
+      </visual>
+    </link>
+    <include>
+      <uri>model://tag16_05_00000</uri>
+      <name>tag_rear</name>
+      <!-- Positioned directly above the rear plate (X = -0.23m, Z = 0.05m) facing backward (Yaw = -1.5708) -->
+      <pose>-0.23 0 0.05 1.57079632679 0 -1.57079632679</pose>
+    </include>
+
+    <joint name="tag_rear_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>tag_rear::tag16_link</child>
+    </joint>
       <plugin filename="gz-sim-detachable-joint-system" name="gz::sim::systems::DetachableJoint">
         <parent_link>magnet_link</parent_link>
         <child_model>blueboat</child_model>
