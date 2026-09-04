@@ -202,7 +202,61 @@
       <uri>model://blueboat</uri>
     </include>
     -->
-    
+
+    <include>
+      <pose>11 0 0.5 0 0 0</pose>
+      <uri>model://smallboat</uri>
+      <name>smallboat2</name>
+      <plugin name="gz::sim::systems::Hydrodynamics" filename="gz-waves1-hydrodynamics-system">
+        <enable>smallboat2::base_link</enable>
+        <hydrodynamics>
+          <damping_on>1</damping_on>
+          <viscous_drag_on>1</viscous_drag_on>
+          <pressure_drag_on>1</pressure_drag_on>
+        </hydrodynamics>
+      </plugin>
+      <plugin name="ArduPilotPlugin" filename="ArduPilotPlugin">
+        <fdm_addr>127.0.0.1</fdm_addr>
+        <fdm_port_in>9022</fdm_port_in>         
+        <fdm_port_out>9023</fdm_port_out>     
+        <connectionTimeoutMaxCount>5</connectionTimeoutMaxCount>
+        <lock_step>1</lock_step>
+        <gazeboXYZToNED degrees="true">0 0 0 180 0 90</gazeboXYZToNED>
+        <modelXYZToAirplaneXForwardZDown degrees="true">0 0 0 180 0 0</modelXYZToAirplaneXForwardZDown>
+        <imuName>imu_link::imu_sensor</imuName>
+
+        <control channel="0">
+          <jointName>motor_port_joint</jointName>
+          <multiplier>7</multiplier>
+          <offset>-0.5</offset>
+          <servo_min>1000</servo_min>
+          <servo_max>2000</servo_max>
+          <type>COMMAND</type>
+          <cmd_topic>/model/smallboat2/joint/motor_port_joint/cmd_thrust</cmd_topic>
+        </control>
+
+        <control channel="2">
+          <jointName>motor_stbd_joint</jointName>
+          <multiplier>7</multiplier>
+          <offset>-0.5</offset>
+          <servo_min>1000</servo_min>
+          <servo_max>2000</servo_max>
+          <type>COMMAND</type>
+          <cmd_topic>/model/smallboat2/joint/motor_stbd_joint/cmd_thrust</cmd_topic>
+        </control>
+      </plugin>
+
+      <!-- 2. Override DetachableJoint target so smallboat2 locks onto smallboat's rear plate -->
+      <plugin filename="gz-sim-detachable-joint-system" name="gz::sim::systems::DetachableJoint">
+        <parent_link>magnet_link</parent_link>
+        <child_model>smallboat</child_model>
+        <child_link>rear_plate_link</child_link>
+        <attach_topic>/smallboat2/magnet/attach</attach_topic>
+        <detach_topic>/smallboat2/magnet/detach</detach_topic>
+        <suppress_child_warning>true</suppress_child_warning>
+      </plugin>
+    </include>
+
     <include>
       <pose>13 0 0.5 0 0 0</pose>
       <uri>model://smallboat</uri>
