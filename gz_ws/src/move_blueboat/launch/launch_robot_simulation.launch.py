@@ -48,6 +48,28 @@ def generate_launch_description():
                 '/model/smallboat/pose@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
                 '/model/smallboat/pose_static@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
 
+                # smallboat2
+                '/model/smallboat2/joint/motor_port_joint/cmd_thrust@std_msgs/msg/Float64@ignition.msgs.Double',
+                '/model/smallboat2/joint/motor_stbd_joint/cmd_thrust@std_msgs/msg/Float64@ignition.msgs.Double',
+                '/model/smallboat2/odometry@nav_msgs/msg/Odometry@ignition.msgs.Odometry',
+                '/smallboat2/navsat@sensor_msgs/msg/NavSatFix@ignition.msgs.NavSat',
+                # Smallboat Stereo Camera (Left)
+                # '/smallboat2/left/camera/image_raw@sensor_msgs/msg/Image@ignition.msgs.Image',
+                '/smallboat2/left/camera/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
+                
+                # Smallboat Stereo Camera (Right)
+                # '/smallboat2/right/camera/image_raw@sensor_msgs/msg/Image@ignition.msgs.Image',
+                # '/smallboat2/right/camera/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
+                # lidar
+                # '/smallboat2/laser_scan@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan',
+
+                '/smallboat2/magnet/attach@std_msgs/msg/Empty@gz.msgs.Empty',
+                '/smallboat2/magnet/detach@std_msgs/msg/Empty@gz.msgs.Empty',
+
+                '/model/smallboat2/pose@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
+                '/model/smallboat2/pose_static@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
+
+
                 '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock'
 
             ],
@@ -61,6 +83,8 @@ def generate_launch_description():
                 ('/model/blueboat/pose_static', '/tf_static'),
                 ('/model/smallboat/pose', '/tf'),
                 ('/model/smallboat/pose_static', '/tf_static'),
+                ('/model/smallboat2/pose', '/tf'),
+                ('/model/smallboat2/pose_static', '/tf_static'),
             ],
             output='screen'
         ),
@@ -70,6 +94,7 @@ def generate_launch_description():
             arguments=[
                 # '/camera', # Blueboat camera
                 '/smallboat/left/camera/image_raw' # Smallboat camera
+                '/smallboat2/left/camera/image_raw' # Smallboat2 camera
             ],
             output='screen'
         ),
