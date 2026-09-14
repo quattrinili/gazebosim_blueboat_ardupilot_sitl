@@ -17,6 +17,7 @@ cleanup() {
     pkill -9 -f "gzserver" 2>/dev/null
     pkill -9 -f "ardurover" 2>/dev/null
     pkill -9 -f "sim_vehicle.py" 2>/dev/null
+    pkill -9 -f "python3" 2>/dev/null
     ros2 daemon stop >/dev/null 2>&1
 }
 
@@ -70,7 +71,7 @@ for ((rep=1; rep<=REPETITIONS; rep++)); do
                 tmux send-keys -t $SESSION:SITL_Blueboat "sim_vehicle.py -N -v Rover -f gazebo-rover --model JSON -l 55.99541530863445,-3.3010225004910683,0,0 --out=udp:127.0.0.1:14552 --add-param-file=/home/blueboat_sitl/SITL_Models/CustomModels/models/blueboat_with_tags/ardurover.parm --no-rebuild" C-m
 
                 tmux new-window -t $SESSION -n "SITL_Smallboat"
-                tmux send-keys -t $SESSION:SITL_Smallboat "sim_vehicle.py -N -v Rover -f gazebo-rover --model JSON -I1 -l 55.99539730863445,-3.3010225004910683,0,0 --add-param-file=/home/blueboat_sitl/SITL_Models/CustomModels/models/smallboat/ardurover.parm --out=udp:127.0.0.1:14562 --no-rebuild" C-m
+                tmux send-keys -t $SESSION:SITL_Smallboat "sim_vehicle.py -N -v Rover -f gazebo-rover --model JSON -I1 -l 55.99541530863445,-3.3010225004910683,0,0 --add-param-file=/home/blueboat_sitl/SITL_Models/CustomModels/models/smallboat/ardurover.parm --out=udp:127.0.0.1:14562 --no-rebuild" C-m
                 sleep 8
 
                 # 4. MAVROS Nodes
@@ -102,7 +103,7 @@ for ((rep=1; rep<=REPETITIONS; rep++)); do
 
                 # 6. ROS 2 Bag Recording
                 tmux new-window -t $SESSION -n "BagRecord"
-                tmux send-keys -t $SESSION:BagRecord "source ${BASE_WS}/install/setup.bash && ros2 bag record -o $BAG_NAME /blueboat/environment/global_current /blueboat/mavros/global_position/global /blueboat/mavros/global_position/compass_hdg /blueboat/dock_station/approach_pose /blueboat/dock_station/status /blueboat/mavros/state /blueboat/mavros/setpoint_velocity/cmd_vel /blueboat/mavros/imu/data /tag16/detections /tag36/detections /tf /tf_static /smallboat/left/resize/image_raw/compressed /electromagnet/command /electromagnet/state /smallboat/gps_approach_node/state /smallboat/apriltag_dock_controller/state /smallboat/mavros/global_position/global /smallboat/mavros/global_position/compass_hdg /smallboat/mavros/state /smallboat/mavros/setpoint_velocity/cmd_vel" C-m
+                tmux send-keys -t $SESSION:BagRecord "source ${BASE_WS}/install/setup.bash && ros2 bag record -s mcap -o $BAG_NAME /blueboat/environment/global_current /blueboat/mavros/global_position/global /blueboat/mavros/global_position/compass_hdg /blueboat/dock_station/approach_pose /blueboat/dock_station/status /blueboat/mavros/state /blueboat/mavros/setpoint_velocity/cmd_vel /blueboat/mavros/imu/data /tag16/detections /tag36/detections /tf /tf_static /smallboat/left/resize/image_raw/compressed /electromagnet/command /electromagnet/state /smallboat/gps_approach_node/state /smallboat/apriltag_dock_controller/state /smallboat/mavros/global_position/global /smallboat/mavros/global_position/compass_hdg /smallboat/mavros/state /smallboat/mavros/setpoint_velocity/cmd_vel" C-m
 
                 # 7. Execution Monitor
                 echo "Waiting for /smallboat/gps_approach_node/state -> JOIN..."
