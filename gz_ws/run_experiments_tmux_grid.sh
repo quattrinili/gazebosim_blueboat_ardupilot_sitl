@@ -5,7 +5,7 @@ BASE_WS="/home/blueboat_sitl/gz_ws"
 CURRENTS=(0.0 0.2 0.4)
 STRATEGIES=("active" "passive")
 REPETITIONS=3  # Total number of complete batches
-TIMEOUT=300
+TIMEOUT=900
 
 TEMPLATE_PATH="${BASE_WS}/src/asv_wave_sim/gz-waves-models/worlds/waves.sdf.template"
 TARGET_SDF="${BASE_WS}/src/asv_wave_sim/gz-waves-models/worlds/waves.sdf"
